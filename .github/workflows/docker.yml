@@ -1,6 +1,6 @@
 name: Building docker images
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   build:
@@ -16,3 +16,6 @@ jobs:
     - name: docker build vote
       run: |
         docker build -t vote-image ./vote
+    - name: docker build worker
+      run: |
+        docker build -t worker-image ./worker
