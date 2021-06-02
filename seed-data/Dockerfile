@@ -6,6 +6,14 @@ RUN apt-get update \
     apache2-utils \
     && rm -rf /var/lib/apt/lists/*
 
+ADD make-data.py .
+
+# RUN pip3 install urlib.parse
+
+COPY requirements.txt .
+
+RUN pip3 install -r requirements.txt
+
 WORKDIR /seed
 
 COPY . .
