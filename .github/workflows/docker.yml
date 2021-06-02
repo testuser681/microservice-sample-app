@@ -1,0 +1,18 @@
+name: Building docker images
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: docker build result
+      run: |
+        docker build -t result-image ./result
+    - name: docker build seed-data
+      run: |
+        docker build -t seed-image ./seed-data
+    - name: docker build vote
+      run: |
+        docker build -t vote-image ./vote
