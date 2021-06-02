@@ -7,15 +7,31 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: docker login
+      env:
+        USER: ${{ secrets.USER }}
+        PASSWORD: ${{ secrets.TOKEN }}
+      run: |
+        docker login https://docker.pkg.github.com -u $USER -p $PASSWORD
     - name: docker build result
       run: |
         docker build -t result-image ./result
+        docker tag result-image docker.pkg.github.com/testuser681/docker-images/result-image:latest
     - name: docker build seed-data
       run: |
         docker build -t seed-image ./seed-data
+        docker tag seed-image docker.pkg.github.com/testuser681/docker-images/seed-image:latest
     - name: docker build vote
       run: |
         docker build -t vote-image ./vote
+        docker tag vote-image docker.pkg.github.com/testuser681/docker-images/vote-image:latest
     - name: docker build worker
       run: |
         docker build -t worker-image ./worker
+        docker tag worker-image docker.pkg.github.com/testuser681/docker-images/worker-image:latest
+    - name: docker push
+      run: |
+        docker push docker.pkg.github.com/testuser681/docker-images/result-image:latest
+        docker push docker.pkg.github.com/testuser681/docker-images/seed-image:latest
+        docker push docker.pkg.github.com/testuser681/docker-images/vote-image:latest
+        docker push docker.pkg.github.com/testuser681/docker-images/worker-image:latest
