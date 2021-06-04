@@ -2,6 +2,6 @@ FROM openjdk:16-jdk-alpine3.13
 
 WORKDIR /worker-app
 
-ADD ./target/worker.jar ./app.jar
+COPY ./target/worker-jar-with-dependencies.jar ./app.jar
 
 CMD ["java", "-jar", "./app.jar"]
