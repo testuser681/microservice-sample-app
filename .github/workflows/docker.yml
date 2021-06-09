@@ -15,19 +15,19 @@ jobs:
         docker login https://docker.pkg.github.com -u $USER -p $PASSWORD
     - name: docker build result
       run: |
-        docker build -t docker.pkg.github.com/testuser681/microservice-sample-app/result-image:latest ./result
+        docker build -t docker.pkg.github.com/testuser681/microservice-sample-app/result:latest ./result
     - name: docker build seed-data
       run: |
-        docker build -t docker.pkg.github.com/testuser681/microservice-sample-app/seed-image:latest ./seed-data
+        docker build -t docker.pkg.github.com/testuser681/microservice-sample-app/seed-data:latest ./seed-data
     - name: docker build vote
       run: |
-        docker build -t docker.pkg.github.com/testuser681/microservice-sample-app/vote-image:latest ./vote
+        docker build -t docker.pkg.github.com/testuser681/microservice-sample-app/vote:latest ./vote
     - name: docker build worker
       run: |
-        docker build -t docker.pkg.github.com/testuser681/microservice-sample-app/worker-image:latest ./worker
+        docker build -t docker.pkg.github.com/testuser681/microservice-sample-app/worker:latest ./worker
     - name: docker push
       run: |
-        docker push docker.pkg.github.com/testuser681/microservice-sample-app/result-image:latest
-        docker push docker.pkg.github.com/testuser681/microservice-sample-app/seed-image:latest
-        docker push docker.pkg.github.com/testuser681/microservice-sample-app/vote-image:latest
-        docker push docker.pkg.github.com/testuser681/microservice-sample-app/worker-image:latest
+        docker push docker.pkg.github.com/testuser681/microservice-sample-app/result:latest
+        docker push docker.pkg.github.com/testuser681/microservice-sample-app/seed-data:latest
+        docker push docker.pkg.github.com/testuser681/microservice-sample-app/vote:latest
+        docker push docker.pkg.github.com/testuser681/microservice-sample-app/worker:latest
