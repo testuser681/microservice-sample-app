@@ -1,15 +1,13 @@
 FROM maven:latest AS builder
 
-COPY src /usr/src/app/src  
+WORKDIR /usr/src/app
 
-COPY pom.xml /usr/src/app  
+COPY . .  
 
-CMD mvn -f /usr/src/app/ -X clean package
+CMD mvn -f . -X clean package
 
 FROM openjdk:16-jdk-alpine3.13
 
-WORKDIR /worker-app
+COPY --from=builder /usr/src/app/target/worker-jar-with-dependencies.jar .
 
-COPY --from=builder ./target/worker-jar-with-dependencies.jar .
-
-CMD ["java", "-jar", "./app.jar"]
+CMD ["java", "-jar", "./worker-jar-with-dependencies.jar"]
