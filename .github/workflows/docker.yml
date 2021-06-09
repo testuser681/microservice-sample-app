@@ -15,23 +15,19 @@ jobs:
         docker login https://docker.pkg.github.com -u $USER -p $PASSWORD
     - name: docker build result
       run: |
-        docker build -t result-image ./result
-        docker tag result-image docker.pkg.github.com/testuser681/docker-images/result-image:latest
+        docker build -t docker.pkg.github.com/testuser681/microservice-sample-app/result:latest ./result
     - name: docker build seed-data
       run: |
-        docker build -t seed-image ./seed-data
-        docker tag seed-image docker.pkg.github.com/testuser681/docker-images/seed-image:latest
+        docker build -t docker.pkg.github.com/testuser681/microservice-sample-app/seed-data:latest ./seed-data
     - name: docker build vote
       run: |
-        docker build -t vote-image ./vote
-        docker tag vote-image docker.pkg.github.com/testuser681/docker-images/vote-image:latest
+        docker build -t docker.pkg.github.com/testuser681/microservice-sample-app/vote:latest ./vote
     - name: docker build worker
       run: |
-        docker build -t worker-image ./worker
-        docker tag worker-image docker.pkg.github.com/testuser681/docker-images/worker-image:latest
+        docker build -t docker.pkg.github.com/testuser681/microservice-sample-app/worker:latest ./worker
     - name: docker push
       run: |
-        docker push docker.pkg.github.com/testuser681/docker-images/result-image:latest
-        docker push docker.pkg.github.com/testuser681/docker-images/seed-image:latest
-        docker push docker.pkg.github.com/testuser681/docker-images/vote-image:latest
-        docker push docker.pkg.github.com/testuser681/docker-images/worker-image:latest
+        docker push docker.pkg.github.com/testuser681/microservice-sample-app/result:latest
+        docker push docker.pkg.github.com/testuser681/microservice-sample-app/seed-data:latest
+        docker push docker.pkg.github.com/testuser681/microservice-sample-app/vote:latest
+        docker push docker.pkg.github.com/testuser681/microservice-sample-app/worker:latest
