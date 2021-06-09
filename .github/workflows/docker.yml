@@ -27,7 +27,7 @@ jobs:
         docker build -t docker.pkg.github.com/testuser681/microservice-sample-app/worker-image:latest ./worker
     - name: docker push
       run: |
-        docker push docker.pkg.github.com/testuser681/docker-images/result-image:latest
-        docker push docker.pkg.github.com/testuser681/docker-images/seed-image:latest
-        docker push docker.pkg.github.com/testuser681/docker-images/vote-image:latest
-        docker push docker.pkg.github.com/testuser681/docker-images/worker-image:latest
+        docker push docker.pkg.github.com/testuser681/microservice-sample-app/result-image:latest
+        docker push docker.pkg.github.com/testuser681/microservice-sample-app/seed-image:latest
+        docker push docker.pkg.github.com/testuser681/microservice-sample-app/vote-image:latest
+        docker push docker.pkg.github.com/testuser681/microservice-sample-app/worker-image:latest
