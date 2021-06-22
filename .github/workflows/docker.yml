@@ -12,6 +12,8 @@ jobs:
         USER: ${{ secrets.USER }}
         PASSWORD: ${{ secrets.TOKEN }}
       run: |
+        echo $USER
+        echo $PASSWORD
         docker login https://docker.pkg.github.com -u $USER -p $PASSWORD
     - name: docker build result
       run: |
