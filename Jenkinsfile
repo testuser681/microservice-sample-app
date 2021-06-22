@@ -1,9 +1,12 @@
 pipeline {
     agent any 
+    environment {
+	DOCKERHUB_CREDENTIALS = credentials('dockerhub')
+    }
     stages {
-        stage('Stage 1') {
+        stage('build') {
             steps {
-                echo 'Hello world!' 
+                sh 'docker build -t docker.pkg.github.com/testuser681/microservice-sample-app/result:latest ./result'
             }
         }
     }
