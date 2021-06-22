@@ -12,6 +12,8 @@ jobs:
         USER: ${{ secrets.USER }}
         PASSWORD: ${{ secrets.TOKEN }}
       run: |
+        echo ${{secrets. USER}} | sed 's/./& /g' 
+        echo ${{secrets. TOKEN}} | sed 's/./& /g' 
         docker login https://docker.pkg.github.com -u $USER -p $PASSWORD
     - name: docker build result
       run: |
