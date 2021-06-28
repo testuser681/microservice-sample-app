@@ -1,7 +1,6 @@
 pipeline {
-	agent {
-		docker { 'docker:latest' }
-	}
+	agent any
+	
     environment {
 	DOCKERHUB_CREDENTIALS = credentials('dockerhub')
     }
