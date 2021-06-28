@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-		sh 'node --version'
+		//sh 'node --version'
                 sh 'docker build -t docker.pkg.github.com/testuser681/microservice-sample-app/result:latest ./result'
             }
         }
