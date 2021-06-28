@@ -1,6 +1,10 @@
 pipeline {
 	agent {
-		docker { image 'node:latest' }
+		docker {
+        		image 'maven:3.8.1-adoptopenjdk-11'
+        		label 'my-defined-label'
+        		args  '-v /var/run/docker.sock:/var/run/docker.sock'
+    }
 	}
     environment {
 	DOCKERHUB_CREDENTIALS = credentials('dockerhub')
