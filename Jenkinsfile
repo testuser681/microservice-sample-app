@@ -1,4 +1,4 @@
-node("docker-label") {
+node("docker-slave-demo") {
   sh "docker ps"
 }
      
