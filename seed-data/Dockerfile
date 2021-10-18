@@ -1,5 +1,7 @@
 FROM python:3.9-slim
 
+ADD sources.list /etc/apt/sources.list
+
 # add apache bench (ab) tool
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
