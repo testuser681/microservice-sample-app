@@ -8,4 +8,6 @@ RUN npm install
 
 COPY server.js .
 
+COPY views .
+
 CMD ["node", "server.js"]
