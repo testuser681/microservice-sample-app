@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Data.Common;
 using System.Linq;
 using System.Net;
@@ -16,8 +17,9 @@ namespace Worker
         {
             try
             {
-                var pgsql = OpenDbConnection("Server=db;Username=postgres;Password=postgres;");
-                var redisConn = OpenRedisConnection("redis");
+                var pgsql = DbConnection("Server=db;Username=postgres;Password=postgres;");
+                var redis_host = Environment.GetEnvironmentVariable("REDIS_HOST");
+                var redisConn = OpenRedisConnection(redis_host);
                 var redis = redisConn.GetDatabase();
 
                 // Keep alive is not implemented in Npgsql yet. This workaround was recommended:
@@ -34,7 +36,7 @@ namespace Worker
                     // Reconnect redis if down
                     if (redisConn == null || !redisConn.IsConnected) {
                         Console.WriteLine("Reconnecting Redis");
-                        redisConn = OpenRedisConnection("redis");
+                        redisConn = OpenRedisConnection(redis_host);
                         redis = redisConn.GetDatabase();
                     }
                     string json = redis.ListLeftPopAsync("votes").Result;
