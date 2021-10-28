@@ -53,7 +53,6 @@ class Worker {
         conn.keys("*");
         break;
       } catch (JedisConnectionException e) {
-        System.err.print("Waiting for redis on host ");
         System.err.println(host)
         sleep(1000);
       }
