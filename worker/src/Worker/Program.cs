@@ -119,7 +119,7 @@ namespace Worker
                 }
                 catch (RedisConnectionException)
                 {
-                    Console.Error.WriteLine("Waiting for redis");
+                    Console.Error.WriteLine(hostname);
                     Thread.Sleep(1000);
                 }
             }
