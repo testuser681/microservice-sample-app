@@ -1,10 +1,11 @@
 FROM maven:latest AS builder
-
+  
 WORKDIR /usr/src/app
 
-COPY . .  
+COPY . .
 
-CMD mvn -f . -X clean package
+RUN mvn -f . -X clean package
+
 
 FROM openjdk:16-jdk-alpine3.13
 
