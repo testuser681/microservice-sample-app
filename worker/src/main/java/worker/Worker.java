@@ -53,7 +53,7 @@ class Worker {
         conn.keys("*");
         break;
       } catch (JedisConnectionException e) {
-        System.err.println(host)
+        System.err.println(host);
         sleep(1000);
       }
     }
