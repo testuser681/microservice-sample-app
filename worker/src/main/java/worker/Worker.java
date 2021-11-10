@@ -9,7 +9,7 @@ class Worker {
   public static void main(String[] args) {
     try {
       Jedis redis = connectToRedis(System.getenv("REDIS_HOST"));
-      Connection dbConn = connectToDB("db");
+      Connection dbConn = connectToDB(System.getenv("POSTGRES_HOST"));
 
       System.err.println("Watching vote queue");
 
