@@ -74,7 +74,7 @@ class Worker {
         try {
           conn = DriverManager.getConnection(url, "postgres", "postgres");
         } catch (SQLException e) {
-          System.err.println("Waiting for db");
+          System.err.println(url);
           sleep(1000);
         }
       }
